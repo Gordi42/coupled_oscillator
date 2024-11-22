@@ -20,6 +20,9 @@ classifiers = [
 ]
 dependencies = [
   "lazypimp",
+  "ipykernel",
+  "numpy",
+  "matplotlib",
 ]
 license = {file = "LICENSE"}
 
