@@ -29,6 +29,10 @@ To use Coupled Oscillator, import it in your Python code:
 import coupled_oscillator
 ```
 
+## Documentation
+Documentation is available at [coupled-oscillator.readthedocs.io](https://coupled-oscillator.readthedocs.io).
+
+
 ## Author
 - [Silvano Gordian Rosenau](silvano.rosenau@uni-hamburg.de)
 

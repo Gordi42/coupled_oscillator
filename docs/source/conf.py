@@ -90,7 +90,7 @@ pygments_style = 'sphinx'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_book_theme"
-# html_logo = "_static/logo_bright.png"
+html_logo = "_static/oscillator.svg"
 html_theme_options = {
     "repository_url": "https://github.com/Gordi42/coupled_oscillator",
     "use_repository_button": True
