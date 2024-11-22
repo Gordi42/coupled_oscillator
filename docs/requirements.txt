@@ -1,0 +1,10 @@
+myst_parser==3.0.1
+lazypimp
+sphinx-book-theme
+sphinx-copybutton
+sphinx-design
+sphinx_gallery
+sphinxcontrib-youtube
+sphinxcontrib-video
+sphinx-codeautolink
+matplotlib
