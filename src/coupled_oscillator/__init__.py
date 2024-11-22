@@ -20,12 +20,11 @@ from typing import TYPE_CHECKING
 #  Disable lazy loading for type checking
 # ================================================================
 if TYPE_CHECKING:
-    ...
     # import modules
     # from . import my_module
 
     # other imports
-    # from .my_module import my_function
+    from .oscillator_properties import OscillatorProperties
 
 # ================================================================
 #  Setup lazy loading
@@ -36,7 +35,7 @@ all_modules_by_origin = {
 }
 
 all_imports_by_origin = {
-    # "coupled_oscillator.my_module": ["my_function"],
+    "coupled_oscillator.oscillator_properties": ["OscillatorProperties"],
 }
 
 setup(__name__, all_modules_by_origin, all_imports_by_origin)
