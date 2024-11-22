@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     # other imports
     from .oscillator_properties import OscillatorProperties
     from .phase import Phase
+    from .hamiltonian import Hamiltonian
 
 # ================================================================
 #  Setup lazy loading
@@ -38,6 +39,7 @@ all_modules_by_origin = {
 all_imports_by_origin = {
     "coupled_oscillator.oscillator_properties": ["OscillatorProperties"],
     "coupled_oscillator.phase": ["Phase"],
+    "coupled_oscillator.hamiltonian": ["Hamiltonian"],
 }
 
 setup(__name__, all_modules_by_origin, all_imports_by_origin)
