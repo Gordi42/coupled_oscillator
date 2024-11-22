@@ -25,6 +25,7 @@ if TYPE_CHECKING:
 
     # other imports
     from .oscillator_properties import OscillatorProperties
+    from .phase import Phase
 
 # ================================================================
 #  Setup lazy loading
@@ -36,6 +37,7 @@ all_modules_by_origin = {
 
 all_imports_by_origin = {
     "coupled_oscillator.oscillator_properties": ["OscillatorProperties"],
+    "coupled_oscillator.phase": ["Phase"],
 }
 
 setup(__name__, all_modules_by_origin, all_imports_by_origin)
