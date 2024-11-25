@@ -42,9 +42,9 @@ class Phase:
     #  Representation
     # ================================================================
     def __repr__(self) -> str:
-        prop = f"ϕ: {self.angle:.2f}, "
+        prop = f"φ: {self.angle:.2f}, "
         prop += f"ξ: {self.displacement:.2f}, "
-        prop += f"p_ϕ: {self.angle_momentum:.2f}, "
+        prop += f"p_φ: {self.angle_momentum:.2f}, "
         prop += f"p_ξ: {self.displacement_momentum:.2f}"
         return f"Phase({prop})"
 
