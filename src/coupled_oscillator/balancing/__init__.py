@@ -20,6 +20,7 @@ if TYPE_CHECKING:
 
     # other imports
     from .base import BalanceBase
+    from .naive import NaiveBalancer
 
 # ================================================================
 #  Setup lazy loading
@@ -31,6 +32,7 @@ all_modules_by_origin = {
 
 all_imports_by_origin = {
     "coupled_oscillator.balancing.base": ["BalanceBase"],
+    "coupled_oscillator.balancing.naive": ["NaiveBalancer"],
 }
 
 setup(__name__, all_modules_by_origin, all_imports_by_origin)
