@@ -65,6 +65,24 @@ class Phase:
         })
         return ds
 
+
+    def norm_of_difference(self, other: 'Phase') -> float:
+        r"""
+        Computes the norm of the difference between the phase and another phase.
+
+        .. math::
+            2 \frac{\left| \boldsymbol \pi_1 - \boldsymbol \pi_2 \right|}
+            {\left| \boldsymbol \pi_1 \right| + \left| \boldsymbol \pi_2 \right|}
+
+        Parameters:
+            other (Phase): The other phase to compute the difference with.
+
+        Returns:
+            float: The norm of the difference between the two phases.
+        """
+        norm = lambda pi: np.linalg.norm(pi._arr)
+        return 2 * norm(self - other) / (norm(self) + norm(other))
+
     # ================================================================
     #  Coordinate Transformation
     # ================================================================
