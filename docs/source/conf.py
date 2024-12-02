@@ -2,6 +2,7 @@ import os
 import sys
 import inspect
 import shutil
+import tomli
 import importlib
 from unittest.mock import patch, MagicMock
 from jinja2.filters import FILTERS
@@ -18,6 +19,10 @@ sys.path.insert(0, os.path.abspath('../..'))
 import load_modules
 shutil.rmtree("auto_api", ignore_errors=True)
 
+# read pyproject.toml file
+with open("../../pyproject.toml", "rb") as f:
+    pyproject = tomli.load(f)
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -26,10 +31,11 @@ shutil.rmtree("auto_api", ignore_errors=True)
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'coupled_oscillator'
-copyright = "2024, Silvano Gordian Rosenau"
-author = 'Silvano Gordian Rosenau'
-release = '0.1.0'
+project = pyproject["project"]["name"]
+author = pyproject["project"]["authors"][0]["name"]
+year = "{% now 'local', '%Y' %}"
+copyright = f"{year}, {author}"
+release = pyproject["project"]["version"]
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -41,6 +47,7 @@ extensions = [
     'sphinx_design',
     'sphinxcontrib.youtube',
     "sphinxcontrib.video",
+    'nbsphinx',
     'myst_parser',
 ]
 
@@ -67,7 +74,7 @@ sphinx_gallery_conf = {
     'show_signature': False,
     "notebook_extensions": {},
     'backreferences_dir'  : 'gen_modules/backreferences',
-    'doc_module'          : ('coupled_oscillator', ),
+    'doc_module'          : ('{{ cookiecutter.project_slug}}', ),
     'only_warn_on_example_error': True
 }
 
@@ -90,21 +97,21 @@ pygments_style = 'sphinx'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_book_theme"
-html_logo = "_static/oscillator.svg"
+# html_logo = "_static/logo_bright.png"
 html_theme_options = {
-    "repository_url": "https://github.com/Gordi42/coupled_oscillator",
+    "repository_url": "https://github.com/{{ cookiecutter.author_github }}/{{cookiecutter.project_slug}}",
     "use_repository_button": True
     # "logo": {
     #     "image_dark": "_static/logo_dark.png",
     # }
 }
-html_title = "Coupled Oscillator - Documentation"
+html_title = "{{ cookiecutter.project_name }} - Documentation"
 html_css_files = [
     'css/custom.css',
 ]
 
 html_static_path = ['_static']
-autodoc_mock_imports = ['lazypimp']
+autodoc_mock_imports = pyproject["project"]["dependencies"]
 
 # default_role = 'literal'
 # MyST configuration
