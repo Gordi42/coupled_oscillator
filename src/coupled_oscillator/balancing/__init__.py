@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from .base import BalanceBase
     from .naive import NaiveBalancer
     from .gravity_equilibrium import GravityEquilibrium
+    from .optimal_balance import OptimalBalance
 
 # ================================================================
 #  Setup lazy loading
@@ -35,6 +36,7 @@ all_imports_by_origin = {
     "coupled_oscillator.balancing.base": ["BalanceBase"],
     "coupled_oscillator.balancing.naive": ["NaiveBalancer"],
     "coupled_oscillator.balancing.gravity_equilibrium": ["GravityEquilibrium"],
+    "coupled_oscillator.balancing.optimal_balance": ["OptimalBalance"],
 }
 
 setup(__name__, all_modules_by_origin, all_imports_by_origin)
