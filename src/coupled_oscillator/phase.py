@@ -148,6 +148,16 @@ class Phase:
     def displacement_momentum(self, value: float):
         self._arr[3] = value
     
+    @property
+    def osc_prop(self) -> co.OscillatorProperties:
+        """The oscillator properties of the phase."""
+        return self._osc_prop
+
+    @property
+    def arr(self) -> np.ndarray:
+        """The array containing the values of the phase."""
+        return self._arr
+    
     # ================================================================
     #  Operator Overloads
     # ================================================================
