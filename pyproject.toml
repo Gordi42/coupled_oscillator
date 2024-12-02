@@ -22,6 +22,8 @@ dependencies = [
   "lazypimp",
   "ipykernel",
   "numpy",
+  "scipy",
+  "xarray",
   "matplotlib",
 ]
 license = {file = "LICENSE"}
