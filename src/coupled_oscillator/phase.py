@@ -41,6 +41,30 @@ class Phase:
             angle_momentum=xr_data.angle_momentum.values,
             displacement_momentum=xr_data.displacement_momentum.values
         )
+
+    def to_xr(self, time) -> xr.Dataset:
+        """
+        Converts the phase to an xarray dataset.
+        """
+        ds = xr.Dataset({
+            'time': xr.DataArray(
+                [time], dims='time', 
+                attrs={'units': 's'}),
+            'angle': xr.DataArray(
+                [self.angle], dims='time', 
+                attrs={'units': 'rad', 'long_name': 'Pendulum Angle'}),
+            'displacement': xr.DataArray(
+                [self.displacement], dims='time',
+                attrs={'units': 'm', 'long_name': 'Spring Displacement'}),
+            'angle_momentum': xr.DataArray(
+                [self.angle_momentum], dims='time',
+                attrs={'units': 'kg m² s⁻¹', 'long_name': 'Pendulum Angular Momentum'}),
+            'displacement_momentum': xr.DataArray(
+                [self.displacement_momentum], dims='time',
+                attrs={'units': 'kg m s⁻¹', 'long_name': 'Spring Displacement Momentum'}),
+        })
+        return ds
+
     # ================================================================
     #  Coordinate Transformation
     # ================================================================
