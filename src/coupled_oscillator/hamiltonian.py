@@ -361,7 +361,7 @@ class Hamiltonian:
         m = self.osc_prop.mass(time)
 
         # get the phase properties
-        p_ξ = phase.displacement
+        p_ξ = phase.displacement_momentum
 
         # compute tendency
         dξdt = p_ξ / m
@@ -440,7 +440,7 @@ class Hamiltonian:
         # compute uncoupled tendency
         uncoupled_tendency = - k * ξ
         # compute coupled tendency
-        coupled_tendency = m * g * np.cos(φ) + ϵ * p_φ**2 / (m * (ℓ + ξ)**3)
+        coupled_tendency = m * g * np.cos(φ) + p_φ**2 / (m * (ℓ + ξ)**3)
         # compute full tendency
         dpξdt = uncoupled_tendency + ϵ * coupled_tendency
         return dpξdt
