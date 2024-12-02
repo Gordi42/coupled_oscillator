@@ -1,4 +1,5 @@
 import numpy as np
+import xarray as xr
 import coupled_oscillator as co
 
 
@@ -22,6 +23,24 @@ class Phase:
         self.angle_momentum = angle_momentum
         self.displacement_momentum = displacement_momentum
 
+    @classmethod
+    def from_xr(cls, osc_prop: co.OscillatorProperties, xr_data: xr.Dataset) -> 'Phase':
+        """
+        Creates a Phase object from an xarray dataset.
+
+        Parameters:
+            xr_data (xr.Dataset): The xarray dataset containing the phase data.
+
+        Returns:
+            Phase: The phase object created from the xarray dataset.
+        """
+        return Phase(
+            osc_prop=osc_prop,
+            angle=xr_data.angle.values,
+            displacement=xr_data.displacement.values,
+            angle_momentum=xr_data.angle_momentum.values,
+            displacement_momentum=xr_data.displacement_momentum.values
+        )
     # ================================================================
     #  Coordinate Transformation
     # ================================================================
